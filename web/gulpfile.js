@@ -5,14 +5,18 @@ var connect = require('gulp-connect');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var pngcrush = require('imagemin-pngcrush');
-var sass = require('gulp-sass')
+var sass = require('gulp-sass');
+var minifyHTML = require('gulp-minify-html');
+
 
 
 var path = {
     html: 'src/**/*.html',
     sass: 'src/assets/less/dna.scss',
     img: 'src/assets/img/**/*.*',
-    dna: 'src/assets/js/dna.jsx'
+    dna: 'src/assets/js/dna.jsx',
+    js: 'src/assets/js/**/*.js',
+    fonts:'src/assets/font/**/*'
 }
 
 var config = {
@@ -20,8 +24,15 @@ var config = {
 }
 
 gulp.task('html', function () {
+    var opts = {comments:true,spare:true};
     gulp.src(path.html)
+        .pipe(minifyHTML(opts))
         .pipe(gulp.dest(__dirname + config.dist))
+        .pipe(connect.reload());
+});
+gulp.task('font', function () {
+    gulp.src(path.fonts)
+        .pipe(gulp.dest('dist/font'))
         .pipe(connect.reload());
 });
 
@@ -35,8 +46,8 @@ gulp.task('sass', function () {
 gulp.task('dna', function () {
     gulp.src(path.dna, { read: false })
         .pipe(browserify({
-                debug: true,
-                insertGlobals: true,
+                debug: false,
+                insertGlobals: false,
                 shim: {
                     'jQuery': {
                         path: './vendor/jquery/jquery-2.1.1.min.js',
@@ -79,10 +90,12 @@ gulp.task('connect', function () {
 
 gulp.task('watch', function () {
     gulp.watch(path.html, ['html']);
+    gulp.watch(path.fonts, ['font']);
     gulp.watch(path.sass, ['sass']);
     gulp.watch(path.dna, ['dna']);
     gulp.watch(path.img, ['img']);
+    gulp.watch(path.js,['dna']);
 });
 
 gulp.task('test', ['html', 'sass', 'dna', 'img']);
-gulp.task('default', ['connect', 'html', 'sass', 'dna', 'img', 'watch']);
+gulp.task('default', ['connect', 'html', 'sass', 'dna', 'img','font', 'watch']);

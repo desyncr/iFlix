@@ -1,14 +1,75 @@
 <html>
-  <head>
+<head>
+    <!-- start Mixpanel -->
+    <script type="text/javascript">(function (e, b) {
+        if (!b.__SV) {
+            var a, f, i, g;
+            window.mixpanel = b;
+            b._i = [];
+            b.init = function (a, e, d) {
+                function f(b, h) {
+                    var a = h.split(".");
+                    2 == a.length && (b = b[a[0]], h = a[1]);
+                    b[h] = function () {
+                        b.push([h].concat(Array.prototype.slice.call(arguments, 0)))
+                    }
+                }
+
+                var c = b;
+                "undefined" !== typeof d ? c = b[d] = [] : d = "mixpanel";
+                c.people = c.people || [];
+                c.toString = function (b) {
+                    var a = "mixpanel";
+                    "mixpanel" !== d && (a += "." + d);
+                    b || (a += " (stub)");
+                    return a
+                };
+                c.people.toString = function () {
+                    return c.toString(1) + ".people (stub)"
+                };
+                i = "disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+                for (g = 0; g < i.length; g++)f(c, i[g]);
+                b._i.push([a, e, d])
+            };
+            b.__SV = 1.2;
+            a = e.createElement("script");
+            a.type = "text/javascript";
+            a.async = !0;
+            a.src = ("https:" === e.location.protocol ? "https:" : "http:") + '//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';
+            f = e.getElementsByTagName("script")[0];
+            f.parentNode.insertBefore(a, f)
+        }
+    })(document, window.mixpanel || []);
+    mixpanel.init("78d756a37d8faac69653cb1ae4be1b7f");</script>
+    <!-- end Mixpanel -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='dna.css' rel='stylesheet'/>
-  </head>
-  <body>
-    <div id='container'></div>
-    <footer>
-      <script async src='dna.js'></script>
-  </footer>
+    <meta name="Identifier-URL" content="http://www.iflix.io/"/>
+    <meta name="MSSmartTagsPreventParsing" content="true"/>
+    <meta name="Identifier-URL" content="http://www.iflix.io/"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta property="og:url" content="http://iflix.io/">
+    <meta property="og:image" content="http://iflix.io">
+    <meta property="og:title" content="iFlix - Watching movies just got easier">
+    <meta property="og:description" content="Watch torrent Movies & torrent TV Shows Online right to your TV via PC, Tablet, SmartTV & many other devices. Everything without any additional downloads. Try it now!">
+    <title>iFlix - Watch torrent TV Shows Online, Watch torrent Movies Online</title>
+    <link href="//connect.facebook.net" rel="dns-prefetch">
+    <link href="//static.ak.facebook.com" rel="dns-prefetch">
+    <link href="//s-static.ak.facebook.com" rel="dns-prefetch">
+    <link href="//www.iflix.io" rel="dns-prefetch">
+    <link href="//iflix.io" rel="dns-prefetch">
+    <link href="//fonts.googleapis.com" rel="dns-prefetch">
+    <link href="/dna.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
+</head>
+<body>
+<div id="reactContainer">
+
+</div>
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/sdk.js"></script>
+<script async src='dna.js'></script>
 </body>
 </html>

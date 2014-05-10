@@ -1,5 +1,6 @@
-var React=require('react');
-var Message=require('./HelloMessage');
+var React = require('react');
+var $ = require('jQuery');
+var LoginPage = require('./loginPage');
 
-React.renderComponent(<Message name={'ReactDNA'}/>,document.getElementById('container'));
-console.log('test');
+FB.init({"appId":"1491258637764702","status":true,"cookie":true,"xfbml":true,"oauth":true,version    : 'v2.0'});
+React.renderComponent(<LoginPage/>,document.getElementById('reactContainer'));
